@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  </head>
+  <body>
+      <nav class="nav bg-primary">
+          <div class="container-fluid">
+              <a href="" class="navbar-brand">Go </a>
+            </div>
+        </nav>
+        
+        <div class="container my-5">
+            <div class="d-flex justify-content-betweeen">
+                <h3>List menu</h3>
+                <a href="/menu/add" class="btn btn-sm btn-primary">Tambah Data</a>
+            </div>
+            <table class="table my-4">
+                <thead>
+                    <tr>
+                        <td>nama menu</td>
+                        <td>info menu</td>
+                        <td>harga menu</td>
+                        <td>Action</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{ range $index, $m := .menus }}
+                    <tr>
+                        <td>{{ $m.Name }}</td>
+                        <td>{{ $m.Info }}</td>
+                        <td>{{ $m.Harga }}</td>
+                        <td>
+                            <a href="/menu/update?id={{ $m.Id }}" class="btn btn-warning btn-sm">Edit</a>
+                            <a href="/menu/delete?id={{ $m.Id }}" class="btn btn-danger btn-sm">Delete</a>
+                        </td>
+                    </tr>
+                    {{ end }}
+                </tbody>
+            </table>
+        </div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  </body>
+</html>
